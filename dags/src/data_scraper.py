@@ -287,7 +287,7 @@ def main():
     # Set the number of pages to scrape. In this case, it is set to 1, but you can adjust this number based on your needs.
     while True:
         try:
-            pages = int(input("Enter the number of pages you want to scrape: "))
+            pages = 333
             break
         except ValueError:
             print("Invalid input! Please enter a valID.")

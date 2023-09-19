@@ -3,4 +3,5 @@ uvicorn
 pandas
 numpy
 scikit-learn
-apache-airflow
+bs4
+tqdm

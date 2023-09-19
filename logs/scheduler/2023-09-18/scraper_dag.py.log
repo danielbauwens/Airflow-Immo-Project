@@ -1,0 +1,42 @@
+[2023-09-18T12:30:33.121+0200] {processor.py:157} INFO - Started process (PID=64198) to work on /home/danielbauwens/projects/Airflow-Immo-Project/dags/scraper_dag.py
+[2023-09-18T12:30:33.122+0200] {processor.py:829} INFO - Processing file /home/danielbauwens/projects/Airflow-Immo-Project/dags/scraper_dag.py for tasks to queue
+[2023-09-18T12:30:33.124+0200] {logging_mixin.py:151} INFO - [2023-09-18T12:30:33.123+0200] {dagbag.py:539} INFO - Filling up the DagBag from /home/danielbauwens/projects/Airflow-Immo-Project/dags/scraper_dag.py
+[2023-09-18T12:30:33.135+0200] {logging_mixin.py:151} INFO - [2023-09-18T12:30:33.134+0200] {dagbag.py:347} ERROR - Failed to import: /home/danielbauwens/projects/Airflow-Immo-Project/dags/scraper_dag.py
+Traceback (most recent call last):
+  File "/home/danielbauwens/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/home/danielbauwens/projects/Airflow-Immo-Project/dags/scraper_dag.py", line 10, in <module>
+    start_date=datetime.datetime(2023,9,14),
+AttributeError: type object 'datetime.datetime' has no attribute 'datetime'
+[2023-09-18T12:30:33.136+0200] {processor.py:841} WARNING - No viable dags retrieved from /home/danielbauwens/projects/Airflow-Immo-Project/dags/scraper_dag.py
+[2023-09-18T12:30:33.161+0200] {processor.py:179} INFO - Processing /home/danielbauwens/projects/Airflow-Immo-Project/dags/scraper_dag.py took 0.043 seconds
+[2023-09-18T12:31:24.022+0200] {processor.py:157} INFO - Started process (PID=64539) to work on /home/danielbauwens/projects/Airflow-Immo-Project/dags/scraper_dag.py
+[2023-09-18T12:31:24.024+0200] {processor.py:829} INFO - Processing file /home/danielbauwens/projects/Airflow-Immo-Project/dags/scraper_dag.py for tasks to queue
+[2023-09-18T12:31:24.025+0200] {logging_mixin.py:151} INFO - [2023-09-18T12:31:24.024+0200] {dagbag.py:539} INFO - Filling up the DagBag from /home/danielbauwens/projects/Airflow-Immo-Project/dags/scraper_dag.py
+[2023-09-18T12:31:24.028+0200] {logging_mixin.py:151} INFO - [2023-09-18T12:31:24.027+0200] {dagbag.py:347} ERROR - Failed to import: /home/danielbauwens/projects/Airflow-Immo-Project/dags/scraper_dag.py
+Traceback (most recent call last):
+  File "/home/danielbauwens/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/home/danielbauwens/projects/Airflow-Immo-Project/dags/scraper_dag.py", line 10, in <module>
+    start_date=datetime.datetime(2023,9,14),
+AttributeError: type object 'datetime.datetime' has no attribute 'datetime'
+[2023-09-18T12:31:24.028+0200] {processor.py:841} WARNING - No viable dags retrieved from /home/danielbauwens/projects/Airflow-Immo-Project/dags/scraper_dag.py
+[2023-09-18T12:31:24.048+0200] {processor.py:179} INFO - Processing /home/danielbauwens/projects/Airflow-Immo-Project/dags/scraper_dag.py took 0.029 seconds
+[2023-09-18T12:31:57.568+0200] {processor.py:157} INFO - Started process (PID=64736) to work on /home/danielbauwens/projects/Airflow-Immo-Project/dags/scraper_dag.py
+[2023-09-18T12:31:57.577+0200] {processor.py:829} INFO - Processing file /home/danielbauwens/projects/Airflow-Immo-Project/dags/scraper_dag.py for tasks to queue
+[2023-09-18T12:31:57.578+0200] {logging_mixin.py:151} INFO - [2023-09-18T12:31:57.578+0200] {dagbag.py:539} INFO - Filling up the DagBag from /home/danielbauwens/projects/Airflow-Immo-Project/dags/scraper_dag.py
+[2023-09-18T12:31:57.582+0200] {logging_mixin.py:151} INFO - [2023-09-18T12:31:57.581+0200] {dagbag.py:347} ERROR - Failed to import: /home/danielbauwens/projects/Airflow-Immo-Project/dags/scraper_dag.py
+Traceback (most recent call last):
+  File "/home/danielbauwens/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/home/danielbauwens/projects/Airflow-Immo-Project/dags/scraper_dag.py", line 10, in <module>
+    start_date=datetime.datetime(2023,9,14),
+AttributeError: type object 'datetime.datetime' has no attribute 'datetime'
+[2023-09-18T12:31:57.583+0200] {processor.py:841} WARNING - No viable dags retrieved from /home/danielbauwens/projects/Airflow-Immo-Project/dags/scraper_dag.py
+[2023-09-18T12:31:57.602+0200] {processor.py:179} INFO - Processing /home/danielbauwens/projects/Airflow-Immo-Project/dags/scraper_dag.py took 0.037 seconds

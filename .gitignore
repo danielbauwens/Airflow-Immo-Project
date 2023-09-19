@@ -1,1 +1,2 @@
-.analysis_environment
+.airflow_env
+airflow_env
