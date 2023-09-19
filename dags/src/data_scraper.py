@@ -6,6 +6,7 @@ import json
 import re
 from concurrent.futures import ThreadPoolExecutor
 from tqdm import tqdm
+import os.path
 
 def get_links(session, pages):
     """
@@ -87,13 +88,16 @@ def initialize_csv():
 
     # Open the file in write mode. The newline='' argument is necessary for the csv module to work properly on both 
     # Windows and Unix systems. The file is opened in utf-8 encoding to support a wide range of characters.
-    with open(filename, 'w', newline='', encoding='utf-8') as f:
-        # Create a DictWriter object. This object will be used to write rows to the CSV file. The fieldnames 
-        # argument defines the order in which values in the dictionary are written to the CSV file.
-        writer = csv.DictWriter(f, fieldnames=headers)
-        
-        # Write the headers to the CSV file. This is done by calling the writeheader method on the DictWriter object.
-        writer.writeheader()
+    if os.path.isfile('property_data.csv'):
+        pass
+    else:
+        with open(filename, 'w', newline='', encoding='utf-8') as f:
+            # Create a DictWriter object. This object will be used to write rows to the CSV file. The fieldnames 
+            # argument defines the order in which values in the dictionary are written to the CSV file.
+            writer = csv.DictWriter(f, fieldnames=headers)
+            
+            # Write the headers to the CSV file. This is done by calling the writeheader method on the DictWriter object.
+            writer.writeheader()
 
 
 
@@ -287,7 +291,7 @@ def main():
     # Set the number of pages to scrape. In this case, it is set to 1, but you can adjust this number based on your needs.
     while True:
         try:
-            pages = 333
+            pages = 1
             break
         except ValueError:
             print("Invalid input! Please enter a valID.")

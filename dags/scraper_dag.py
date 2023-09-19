@@ -2,8 +2,7 @@ from airflow.operators.python import PythonOperator
 from airflow.sensors.filesystem import FileSensor
 from airflow.models import DAG
 from src.data_scraper import *
-import airflow
-from datetime import datetime, timedelta 
+from datetime import datetime 
 
 scraper_dag = DAG(
     dag_id='scraper_dag', 
@@ -13,13 +12,12 @@ scraper_dag = DAG(
     )
 scraping_task = PythonOperator(
     task_id='scraping_task',
-    python_callable=main(),
+    python_callable=main,
     dag=scraper_dag
 )
 sensor = FileSensor(
     task_id='process',
-    poke_interval=20,
-    timeout=30,
+    poke_interval=50,
     filepath='./data/scraped_data.csv',
     dag=scraper_dag
 )
