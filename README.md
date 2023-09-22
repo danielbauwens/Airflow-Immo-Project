@@ -1,6 +1,6 @@
 # Airflow-Immo-Project
 
-This was a study project is a part of **AI Bootcamp** at [<\/becode>](https://becode.org/)
+This was a study project as part of the  **AI Bootcamp** at [<\/becode>](https://becode.org/)
 
  
 ## Description
