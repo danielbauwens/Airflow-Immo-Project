@@ -12,7 +12,7 @@ A learning challenge where I aimed to acquire and consolidate knowledge in the f
 - Airflow
 - Data Engineering
 - Data Analysis deployment using [Streamlit](https://streamlit.io/) via Airflow
-- Usage of AWS or similar services
+- Usage of AWS or similar services to host (was not able to get to this stage).
 
 
 ### Data Used
