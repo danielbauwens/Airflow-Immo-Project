@@ -50,4 +50,6 @@ streamlit_task = PythonOperator(
     python_callable=run_streamlit_app,
     dag=scraper_dag
 )
+
+# Dependencies are set in order of execution preference.
 scraping_task >> cleanup >> preprocessor >> tr_task >> streamlit_task
