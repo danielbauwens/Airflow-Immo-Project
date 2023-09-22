@@ -1,8 +1,10 @@
 import joblib
 from sklearn.linear_model import LinearRegression
 import numpy as np
+import pandas as pd
 from sklearn.model_selection import train_test_split
-def model_linear(df, dfpredict):
+df = pd.read_csv('./data/processed_data.csv')
+def training():
     '''Handles the code to train with a Linear Regression, and test our cleaned dataset on.'''
     
     # Trying to load a saved model.
@@ -29,6 +31,9 @@ def model_linear(df, dfpredict):
         # Saving the fit data so it can be re-used.
         joblib.dump(reg, './output/reg.pkl')
 
+
+def model_linear(reg, dfpredict):
+    
     # Displaying score of Training variables.
     #print("Linear Training score:", reg.score(X_train, y_train)) 
 

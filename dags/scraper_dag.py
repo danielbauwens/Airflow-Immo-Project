@@ -2,7 +2,16 @@ from airflow.operators.python import PythonOperator
 from airflow.sensors.filesystem import FileSensor
 from airflow.models import DAG
 from src.data_scraper import *
+from src.analysis import first_cleanup
+from src.preprocessing import cleaning
+from src.predict import training
 from datetime import datetime 
+import pandas as pd
+import os
+
+def run_streamlit_app():
+    os.system('streamlit run ./immo_app.py')
+
 
 scraper_dag = DAG(
     dag_id='scraper_dag', 
@@ -10,29 +19,34 @@ scraper_dag = DAG(
     schedule_interval="@daily",
     catchup=False
     )
+
 scraping_task = PythonOperator(
     task_id='scraping_task',
     python_callable=main,
     dag=scraper_dag
 )
-sensor = FileSensor(
-    task_id='process',
-    poke_interval=50,
-    filepath='./data/scraped_data.csv',
+
+cleanup = PythonOperator(
+    task_id='cleanup_task',
+    python_callable=first_cleanup,
     dag=scraper_dag
 )
-'''merge_task= PythonOperator(
-    task_id='merge_task',
-    python_callable='merge with pandas in seperate file',
+
+preprocessor = PythonOperator(
+    task_id='process_task',
+    python_callable=cleaning,
     dag=scraper_dag
 )
 
 tr_task = PythonOperator(
     task_id='tr_task',
-    python_callable='call this files function to start preprocessing, testing+training and prediction stuff',
+    python_callable=training,
     dag=scraper_dag
-)'''
+)
 
-#add in streamlit web server to analyze with graphs
-
-#scraping_task >> sensor #>> merge_task >> tr_task
+streamlit_task = PythonOperator(
+    task_id='streamlit_task',
+    python_callable=run_streamlit_app,
+    dag=scraper_dag
+)
+scraping_task >> cleanup >> preprocessor >> tr_task >> streamlit_task

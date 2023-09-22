@@ -5,3 +5,4 @@ numpy
 scikit-learn
 bs4
 tqdm
+streamlit

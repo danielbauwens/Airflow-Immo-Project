@@ -61,7 +61,7 @@ def initialize_csv():
     """
 
     # Define the filename
-    filename = "property_data.csv"
+    filename = "./data/property_data.csv"
 
     # Define the headers of the CSV file. These are the names of the fields each row will have.
     headers = [
@@ -78,7 +78,7 @@ def initialize_csv():
         "terrace_area",
         "garden",
         "garden_area",
-        "land_area",
+        "landplot",
         "facades",
         "pool",
         "ID",
@@ -88,7 +88,7 @@ def initialize_csv():
 
     # Open the file in write mode. The newline='' argument is necessary for the csv module to work properly on both 
     # Windows and Unix systems. The file is opened in utf-8 encoding to support a wide range of characters.
-    if os.path.isfile('property_data.csv'):
+    if os.path.isfile('./data/property_data.csv'):
         pass
     else:
         with open(filename, 'w', newline='', encoding='utf-8') as f:
@@ -99,7 +99,37 @@ def initialize_csv():
             # Write the headers to the CSV file. This is done by calling the writeheader method on the DictWriter object.
             writer.writeheader()
 
+def read_existing_listings(filename):
+    with open(filename, 'r', newline='', encoding='utf-8') as f:
+        reader = csv.DictReader(f)
+        existing_listings = list(reader)
 
+    return existing_listings
+
+def is_duplicate_listing(data_dict, existing_listings):
+        # Iterate over each existing listing in the list of existing_listings
+        for existing_listing in existing_listings:
+            # Check if the ID of the existing listing matches the ID of the data_dict
+            if data_dict['ID'] == existing_listing['ID']:
+                return True  # Return True if conditions match, indicating a duplicate listing
+            else:
+                continue
+        return False  # Return False if no duplicate listing is found
+
+def write_to_csv(data_dict):
+    """This function writes a dictionary to the CSV file."""
+    filename = "./data/property_data.csv"
+
+    # Read existing listings from the CSV file
+    existing_listings = read_existing_listings(filename)
+
+    # Append new listings to the CSV file
+    # Check for duplicate listings based on ID, Zip Code, and garden area
+    if is_duplicate_listing(data_dict, existing_listings) == False:
+        # Open the file in append mode to add the new listing
+        with open(filename, 'a', newline='', encoding='utf-8') as f:
+            writer = csv.DictWriter(f, fieldnames=data_dict.keys())
+            writer.writerow(data_dict)
 
 def process_link(session, url):
     """
@@ -254,7 +284,7 @@ def extract_relevant_data(soup, url):
         "terrace_area": classified_terrace_area,
         "garden": classified_garden,
         "garden_area": classified_garden_area,
-        "land_area": classified_surface_land,
+        "landplot": classified_surface_land,
         "facades": classified_number_of_facades,
         "pool": classified_swimming_pool,
         "ID": classified_id,
@@ -262,23 +292,6 @@ def extract_relevant_data(soup, url):
         "URL": classified_url
     }
 
-
-
-def write_to_csv(data_dict):
-    """This function writes a dictionary to the CSV file."""
-    filename = "property_data.csv"
-
-
-    # Read existing listings from the CSV file
-    existing_listings = read_existing_listings(filename)
-
-    # Append new listings to the CSV file
-    # Check for duplicate listings based on ID, Zip Code, and garden area
-    if not is_duplicate_listing(data_dict, existing_listings):
-        # Open the file in append mode to add the new listing
-        with open(filename, 'a', newline='', encoding='utf-8') as f:
-            writer = csv.DictWriter(f, fieldnames=data_dict.keys())
-            writer.writerow(data_dict)
 
 
 def main():
@@ -316,40 +329,7 @@ def main():
 
     print("Scraping done!🕸️")
     # Calculate and print the total time taken for the script to execute
-    print("Execution time: ", end_time - start_time, "seconds")  
-
-
-def read_existing_listings(filename):
-    with open(filename, 'r', newline='', encoding='utf-8') as f:
-        reader = csv.DictReader(f)
-        existing_listings = list(reader)
-
-    return existing_listings
-
-def is_duplicate_listing(data_dict, existing_listings):
-        global duplicate_counter
-        # Iterate over each existing listing in the list of existing_listings
-        for existing_listing in existing_listings:
-            # Check if the ID of the existing listing matches the ID of the data_dict
-            if existing_listing is not None and data_dict is not None:
-                if existing_listing['ID'] == data_dict['ID']:
-                    # If the IDs match, check if the Zip code of the existing listing matches the Zip code of the data_dict (*placeholder for address)
-                    if existing_listing['Zip code'] == data_dict['Zip code']:
-                        # If the Zip codes match, check if the garden area of the existing listing matches the garden area of the data_dict (*placeholder for living_area)
-                        if existing_listing['garden area'] == data_dict['garden area']:
-                            duplicate_counter += 1
-                            return True  # Return True if all three conditions match, indicating a duplicate listing
-                        else:
-                            break
-                    else:
-                        break
-                else:
-                    break
-        return False  # Return False if no duplicate listing is found
+    print("Execution time: ", end_time - start_time, "seconds") 
 
 if __name__ == "__main__":
-
-    #Creating counter for duplicates
-    duplicate_counter = 0
     main()
-    print("Number of duplicate listings:", duplicate_counter)
