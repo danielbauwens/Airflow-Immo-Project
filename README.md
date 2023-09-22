@@ -4,6 +4,8 @@ This was a study project as part of the  **AI Bootcamp** at [<\/becode>](https:/
 
  
 ## Description
+<img src="./output/dagtasks.png" alt="dag testing" width="400"/>
+
 
 ### Project Goal
 
