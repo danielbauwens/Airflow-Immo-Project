@@ -17,39 +17,31 @@ A learning challenge where I aimed to acquire and consolidate knowledge in the f
 
 ### Data
 
-A sample database ([SQLite](https://www.sqlite.org/index.html)), reflecting the assortiment, ratings, and sales information for the Belgian market, from the wine selling website ([Vivino](https://www.vivino.com/BE/en/)) was provided.
+Some of the data and code come from multiple previous projects I worked on, which you can learn more about here:    
+
+* [Initial Immo Scraper](https://github.com/danielbauwens/challenge-collecting-data)
+* [Belgian Postcode Scraper](https://github.com/danielbauwens/Data-Scraper-Belgian-Locations)
+* [Immo Eliza Price Prediction](https://github.com/danielbauwens/ImmoWeb-Data-Analysis-and-Prediction)
 
 
 ## Installation
 
-The **Wiwinio Project** is available from the [GitHub repository](https://github.com/danielbauwens/Wiwinio-Project). PLease, follow the following instructions to clone and browse the project files.
+Please follow the following instructions below to use and operate the files.
 
-- Clone the [project repository](https://github.com/danielbauwens/Wiwinio-Project.git) to your local machine
+- Clone the [project repository](https://github.com/danielbauwens/Airflow-Immo-Project.git) to your local machine
 - Navigate to clone's root folder
 - Create and activate project's *virtual environment*
-    - Run: `python -m venv _project_env`
-    - Run: `source _project_env/Scripts/activate`
-- Install the required libraries:
-    - [![python version](https://img.shields.io/badge/python-3.x-blue)](https://python.org)
-    - [![Pandas Version](https://img.shields.io/badge/pandas-2.0.3-green)](https://pandas.pydata.org/)
-    - [![NumPy Version](https://img.shields.io/badge/numpy-1.24.3-orange)](https://numpy.org/)
-    - [![Matplotlib Version](https://img.shields.io/badge/Matplotlib-3.7.1-red)](https://matplotlib.org/)
-    - [![Seaborn Version](https://img.shields.io/badge/seaborn-0.12.2-yellow)](https://seaborn.pydata.org/)
-    - [![plotly Version](https://img.shields.io/badge/plotly-5.15.0-black)](https://plotly.com/)
-    - [![ipykernel Version](https://img.shields.io/badge/ipykernel-6.23.1-grey)](https://pypi.org/project/ipykernel/)
-    - [![SQLAlchemy version](https://img.shields.io/badge/SQLAlchemy-2.0.20-darkred)](https://www.sqlalchemy.org/)
-    - [![streamlit version](https://img.shields.io/badge/streamlit-1.26.0-darkgreen)](https://streamlit.io/)
-
-    You can click on the badge links to learn more about each library and its specific version used in this project.
-    You can install them manually using `pip install <library name>` or just running `pip install -r requirements.txt`.
+    - Run: `python -m venv airflow_env`
+    - Activate: `source airflow_env/bin/activate` (notice this is for linux, as you can't run airflow on windows)
+    You can install the required modules and packages by running `pip install -r requirements.txt` in your command line.
 
 
 ## Usage
 
 - Airflow only functions on Unix based systems (not Windows(yet)), so you'll need to either run this through a docker environment or in my case through WSL:
-    - Run `cd src` to move to *src* folder
-    - Run `streamlit run 1_??_Home.py` to open the web app
-    - Explore the analysis
+    - Run WSL and open vscode with it
+    - Run `airflow webserver -p 8080` to localhost on port 8080. Type 'localhost:8080' in your url bar to navigate to it.
+    - Search for 'scraper_dag' and trigger to start scraping/cleaning/processing/training and finally hosting a local streamlit web app that shows you the final cleaned dataframe (localhost:8051 by default).
 
 
 ### Folder structure
@@ -59,8 +51,10 @@ The project folder is organized as follows:
 ```
 .
 └── Repository Name/
+    ├── airflow/
+    │   └── < airflow data and config files (e.g. db, .cfg, etc.) >
     ├── data/
-    │   └── < data files (e.g. db, csv, etc.) >
+    │   └── < data files (use-case csv files, etc.) >
     ├── dags/
     │   └── src/
     │   │   └── < all python files to run the dag tasks required for scraping > 
