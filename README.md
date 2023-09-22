@@ -5,7 +5,7 @@ This was a study project is a part of **AI Bootcamp** at [<\/becode>](https://be
  
 ## Description
 
-### Mission Objectives
+### Project Goal
 
 A learning challenge where I aimed to acquire and consolidate knowledge in the following subjects:
 
@@ -15,7 +15,7 @@ A learning challenge where I aimed to acquire and consolidate knowledge in the f
 - Usage of AWS or similar services
 
 
-### Data
+### Data Used
 
 Some of the data and code come from multiple previous projects I worked on, which you can learn more about here:    
 
